@@ -23,7 +23,7 @@ class Connector implements ConnectorInterface
 	 * Represents the error message if a database connection failed.
 	 * @var string
 	 */
-	protected const ERROR_CONNECTION_FAILED = 'The database connection failed.';
+	protected const ERROR_CONNECTION_FAILED = '[%s] The database connection failed. %s: %s';
 
 	/**
 	 * Represents the error message if a transaction failed to start.
@@ -59,7 +59,7 @@ class Connector implements ConnectorInterface
 	 * Represents the error message if the execution of a statement failed.
 	 * @var string
 	 */
-	protected const ERROR_EXECUTION_OF_STATEMENT_FAILED = '[%s] The execution of the statement failed. %s: %s';
+	protected const ERROR_STATEMENT_EXECUTION_FAILED = '[%s] The execution of the statement failed. %s: %s';
 
 	/**
 	 * Represents the error message if the setting of the fetch mode of a statement failed.
@@ -149,7 +149,16 @@ class Connector implements ConnectorInterface
 		}
 		catch ( PDOException $exception )
 		{
-			throw new ConnectionFailedException( static::ERROR_CONNECTION_FAILED, $exception->errorInfo[ 1 ], $exception );
+			throw new ConnectionFailedException(
+				sprintf(
+					static::ERROR_CONNECTION_FAILED,
+					$exception->errorInfo[ 0 ],
+					$exception->errorInfo[ 1 ],
+					$exception->errorInfo[ 2 ]
+				),
+				$exception->errorInfo[ 1 ],
+				$exception
+			);
 		}
 	}
 
@@ -187,7 +196,7 @@ class Connector implements ConnectorInterface
 		{
 			throw new StatementExecutionFailedException(
 				sprintf(
-					static::ERROR_EXECUTION_OF_STATEMENT_FAILED,
+					static::ERROR_STATEMENT_EXECUTION_FAILED,
 					$exception->errorInfo[ 0 ],
 					$exception->errorInfo[ 1 ],
 					$exception->errorInfo[ 2 ]
