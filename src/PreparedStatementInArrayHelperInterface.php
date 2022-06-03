@@ -15,8 +15,8 @@ interface PreparedStatementInArrayHelperInterface
 	public function getNamedPlaceholders(): string;
 
 	/**
-	 * Gets the associative array with the arguments specified by their indices and the placholder prefrix.
-	 * @return array The associative array with the arguments specified by their indices and the placholder prefrix.
+	 * Gets the associative array with the arguments specified by their indices and their placeholder prefixes.
+	 * @return array The associative array with the arguments specified by their indices and their placeholder prefixes.
 	 */
 	public function getArguments(): array;
 }
