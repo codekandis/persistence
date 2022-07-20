@@ -11,17 +11,17 @@ use CodeKandis\Persistence\ConnectorInterface;
 abstract class AbstractRepository implements RepositoryInterface
 {
 	/**
-	 * Stores the database connector.
+	 * Stores the persistence connector.
 	 * @var ConnectorInterface
 	 */
-	protected ConnectorInterface $databaseConnector;
+	protected ConnectorInterface $persistenceConnector;
 
 	/**
 	 * Constructor method.
-	 * @param ConnectorInterface $connector The database connector.
+	 * @param ConnectorInterface $connector The persistence connector.
 	 */
 	public function __construct( ConnectorInterface $connector )
 	{
-		$this->databaseConnector = $connector;
+		$this->persistenceConnector = $connector;
 	}
 }

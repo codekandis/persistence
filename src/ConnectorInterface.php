@@ -7,7 +7,7 @@ use CodeKandis\Entities\EntityPropertyMappings\EntityPropertyMapperInterface;
 use stdClass;
 
 /**
- * Represents the interface of any database connector.
+ * Represents the interface of any persistence connector.
  * @package codekandis/persistence
  * @author Christian Ramelow <info@codekandis.net>
  */

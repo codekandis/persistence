@@ -13,7 +13,7 @@ use function count;
 use function sprintf;
 
 /**
- * Represents a database connector.
+ * Represents a persistence connector.
  * @package codekandis/persistence
  * @author Christian Ramelow <info@codekandis.net>
  */
