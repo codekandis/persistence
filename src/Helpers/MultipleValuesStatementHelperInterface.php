@@ -1,5 +1,5 @@
 <?php declare( strict_types = 1 );
-namespace CodeKandis\Persistence;
+namespace CodeKandis\Persistence\Helpers;
 
 /**
  * Represents the interface of any multiple values statement helper.
